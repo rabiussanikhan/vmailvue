@@ -35,7 +35,7 @@ interface Props {
 const props = defineProps<Props>()
 let emailSelection = useEmailSelection();
 let numberSelected = computed(() => emailSelection.emails.size)
-let allEmailsSelected = computed(() => numberSelected.value === props.emails.length)
+let allEmailsSelected = computed(() => numberSelected.value === props.emails.length && numberSelected.value != 0)
 let someEmailsSelected = computed(() => {
     return numberSelected.value > 0 && numberSelected.value < props.emails.length
 })

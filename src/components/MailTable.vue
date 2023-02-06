@@ -1,7 +1,7 @@
 <template>
-    <button @click="selectedScreen = 'inbox'"
+    <button @click="selectScreen('inbox')"
             :disabled="selectedScreen === 'inbox'">Inbox</button>
-    <button @click="selectedScreen = 'archive'"
+    <button @click="selectScreen('archive')"
             :disabled="selectedScreen === 'archive'">Archived</button>
     <BulkActionBar :emails="filteredEmails" />
     <table class="mail-table">
@@ -40,7 +40,7 @@ import {ChangeEmailParamType, Email} from "@/types/email";
 import useEmailStore from "@/store/email";
 import useEmailSelection from "@/composable/use-email-selection";
 
-const {emails: selectedEmail, toggle: toggleEmail} = useEmailSelection();
+const {emails: selectedEmail, toggle: toggleEmail, clear} = useEmailSelection();
 
 const emailStore = useEmailStore()
 
@@ -70,6 +70,11 @@ const openEmail = (email:Email) => {
 const archivedEmail = (email: Email) => {
     email.archived= true;
     emailStore.updateEmail(email)
+}
+
+const selectScreen = (newScreen:string) => {
+    selectedScreen.value = newScreen
+    clear()
 }
 
 const changeEmail = ({toggleRead, toggleArchive, save, closeModal, changeIndex}:ChangeEmailParamType) => {
