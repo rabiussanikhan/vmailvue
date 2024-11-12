@@ -44,6 +44,15 @@
       "sentAt": "2020-03-18T18:25:43.511Z",
       "archived": false,
       "read": true
+    },
+    {
+      "id": 6,
+      "from": "test@yopmail.com",
+      "subject": "Vue.js Newsletter #177",
+      "body": "Vue.js Newsletter #177",
+      "sentAt": "2020-03-18T18:25:43.511Z",
+      "archived": false,
+      "read": true
     }
   ]
 }
